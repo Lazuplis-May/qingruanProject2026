@@ -354,6 +354,11 @@ onUnmounted(() => {
               </div>
             </div>
           </div>
+          <div class="hero-wave" aria-hidden="true">
+            <svg viewBox="0 0 400 36" preserveAspectRatio="none">
+              <path d="M0,0 L0,16 Q100,34 200,22 T400,16 L400,0 Z" fill="var(--color-bg)" />
+            </svg>
+          </div>
         </header>
 
         <main class="profile-body">
@@ -521,6 +526,21 @@ onUnmounted(() => {
   text-align: left;
 }
 
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  transform: translateY(1px);
+}
+
+.hero-wave svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* ========== 头像 ========== */
 .avatar-wrapper {
   position: relative;
@@ -534,10 +554,11 @@ onUnmounted(() => {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   transition: transform var(--transition-fast);
+  transform: rotate(2deg);
 }
 
 .avatar-wrapper:active {
-  transform: scale(0.96);
+  transform: rotate(0deg) scale(0.96);
 }
 
 .avatar-img {

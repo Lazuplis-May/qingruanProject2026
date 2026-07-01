@@ -375,6 +375,11 @@ onUnmounted(() => {
           class="banner-slide"
           :style="{ '--banner-accent': b.color, '--banner-accent-light': b.colorLight }"
         >
+          <div class="banner-shapes" aria-hidden="true">
+            <span class="banner-shape banner-shape-1"></span>
+            <span class="banner-shape banner-shape-2"></span>
+            <span class="banner-shape banner-shape-3"></span>
+          </div>
           <div class="banner-text">
             <div class="banner-eyebrow">
               <span class="data-dot-static"></span>
@@ -524,6 +529,7 @@ onUnmounted(() => {
       </div>
       <div v-else class="doctor-scroll">
         <div v-for="doc in doctors" :key="doc.id" class="doctor-card" @click="goDoctor(doc)">
+          <div class="doctor-card-bg" aria-hidden="true"></div>
           <div class="doctor-avatar-wrap">
             <div class="avatar-ring">
               <img
@@ -1259,7 +1265,7 @@ onUnmounted(() => {
 .avatar-ring {
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-full);
+  border-radius: 30%;
   padding: 2px;
   background: var(--color-primary);
   box-shadow: 0 2px 8px rgba(0, 113, 227, 0.15);
@@ -1269,7 +1275,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   border: 2px solid #fff;
-  border-radius: var(--radius-full);
+  border-radius: 28%;
   object-fit: cover;
   background: var(--color-bg);
 }
