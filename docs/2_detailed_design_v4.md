@@ -4922,6 +4922,7 @@ export function useUI() {
 | `execute_SQL`（兜底） | 上述专用工具未覆盖的查询场景兜底 | `{"sql":"{{sql}}","user_id":"{{user}}","api_key":"..."}` | role=admin 全权限路径（7.3.3 节路由处理器中 operatorRole='admin' 跳过行级约束） |
 
 > **工具设计说明（v13 修订，对齐需求 6.11 节）**：
+>
 > - **专用工具 vs 单一 execute_SQL**：需求 6.11 节定义的 5 个专用工具有明确的语义边界，每个工具在 Express 端点对应一个参数化查询处理器，SQL 模板固定（如 `query_table` 对应 `SELECT * FROM {table} WHERE {where} ORDER BY {order_by} LIMIT ? OFFSET ?`），表名和字段名通过白名单校验防注入。保留 `execute_SQL` 作为兜底工具覆盖复杂场景。
 > - **`delete_record` 二次确认**：需求 6.11 节明确要求前端必须展示二次确认弹窗（含影响行数预览），Agent 系统提示词已包含"删除操作须展示待删除内容并获管理员确认"约束（见上方系统提示词"限制"部分）。
 > - **Express 端点分发逻辑**：与 diabetes-assistant-agent 共用 `/api/admin/execute` 端点，根据 `req.body.tool_name` 分发。admin-manager-agent 的 user_id 对应用户 role=admin，路由处理器（7.3.3 节）查询 users 表获取 operatorRole='admin' 后跳过行级约束。
